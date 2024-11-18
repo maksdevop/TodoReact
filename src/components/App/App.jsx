@@ -5,16 +5,10 @@ import Header from '../Header/Header';
 import NewTaskForm from '../NewTaskForm/NewTaskForm';
 import Footer from '../Footer/Footer';
 
-                        function App() {
+function App() {
     const [todos, setTodos] = useState([]);
     const [nextId, setNextId] = useState(1);
     const [filter, setFilter] = useState('all');
-
-
-
-
-
-
 
     const addTodo = (taskName) => {
         const newTask = {
