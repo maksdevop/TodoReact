@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import React, { ChangeEvent, FC, FormEvent, useState } from 'react';
 import './NewTaskForm.css';
 
-function NewTaskForm({ addTodo }) {
-    const [inputValue, setInputValue] = useState('');
+type NewTaskFormProps = {
+    addTodo: (taskName: string) => void;
+};
 
-    const handleChange = (e) => {
+const NewTaskForm: FC<NewTaskFormProps> = ({ addTodo }) => {
+    const [inputValue, setInputValue] = useState<string>('');
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
     };
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         addTodo(inputValue);
         setInputValue('');
@@ -22,8 +26,7 @@ function NewTaskForm({ addTodo }) {
                 onChange={handleChange}
                 value={inputValue}
             />
-            ;
         </form>
     );
-}
+};
 export default NewTaskForm;

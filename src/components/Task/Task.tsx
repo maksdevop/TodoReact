@@ -1,16 +1,29 @@
-import { useState } from 'react';
+import React, { ChangeEvent, FC, useState, KeyboardEvent } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 
 import './Task.css';
 
-function Task({ todo, deleteTodo, toggleCompletion }) {
-    const [isUpdate, setIsUpdate] = useState();
-    const [inputValue, setInputValue] = useState(todo.name);
-    const handleChange = (e) => {
+type Todo = {
+    id: number;
+    name: string;
+    completed: boolean;
+    createdAt: string;
+};
+type TaskProps = {
+    todo: Todo;
+    deleteTodo: (id: number) => void;
+    toggleCompletion: (id: number) => void;
+};
+
+const Task: FC<TaskProps> = ({ todo, deleteTodo, toggleCompletion }) => {
+    const [isUpdate, setIsUpdate] = useState<boolean>(false);
+    const [inputValue, setInputValue] = useState<string>(todo.name);
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
     };
 
-    const handleUpdateTaskEnter = (e) => {
+    const handleUpdateTaskEnter = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             setIsUpdate(!isUpdate);
         }
@@ -19,6 +32,7 @@ function Task({ todo, deleteTodo, toggleCompletion }) {
             setIsUpdate(!isUpdate);
         }
     };
+    
     const handleUpdateTask = () => {
         setIsUpdate(!isUpdate);
     };
@@ -66,6 +80,6 @@ function Task({ todo, deleteTodo, toggleCompletion }) {
             </div>
         </li>
     );
-}
+};
 
 export default Task;

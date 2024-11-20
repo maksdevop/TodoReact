@@ -1,6 +1,13 @@
+import React, { FC } from 'react';
+
 import './TaskFilter.css';
 
-function TaskFilter({ setFilter, filter }) {
+interface TaskFilterProps {
+    setFilter: (filter: string) => void;
+    filter: string;
+}
+
+const TaskFilter: FC<TaskFilterProps> = ({ setFilter, filter }) => {
     return (
         <ul className="filters">
             <li>
@@ -32,6 +39,6 @@ function TaskFilter({ setFilter, filter }) {
             </li>
         </ul>
     );
-}
+};
 
 export default TaskFilter;

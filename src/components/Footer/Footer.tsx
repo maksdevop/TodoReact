@@ -1,7 +1,9 @@
+import React from 'react';
+
 import './Footer.css';
 import TaskFilter from '../TaskFilter/TaskFilter';
 
-function Footer({ setTodos, setFilter, filter, todos }) {
+const Footer = ({ setTodos, setFilter, filter, todos }) => {
     const completedTodo = todos.reduce(
         (acc, cur) => acc + Number(!cur.completed),
         0,
@@ -19,6 +21,6 @@ function Footer({ setTodos, setFilter, filter, todos }) {
             </button>
         </footer>
     );
-}
+};
 
 export default Footer;
