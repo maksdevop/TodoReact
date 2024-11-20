@@ -1,5 +1,6 @@
 {
     "name": "todo-kata",
+    "homepage": "https://maksdevop.github.io/TodoReact",
     "private": true,
     "version": "0.0.0",
     "scripts": {
@@ -9,7 +10,9 @@
         "lint": "eslint src/**/*.{js,jsx}",
         "lint:fix": "eslint src/**/*.{js,jsx} --fix",
         "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
-        "prepare": "husky"
+        "prepare": "husky",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist"
     },
     "lint-staged": {
         "*.{js,jsx}": [
@@ -27,6 +30,7 @@
     "devDependencies": {
         "@types/react": "^18.3.12",
         "@types/react-dom": "^18.3.1",
+        "@typescript-eslint/eslint-plugin": "^8.15.0",
         "babel-eslint": "^10.1.0",
         "eslint": "^8.57.1",
         "eslint-config-airbnb": "^19.0.4",
@@ -35,6 +39,7 @@
         "eslint-plugin-jsx-a11y": "^6.10.2",
         "eslint-plugin-react": "^7.37.2",
         "eslint-plugin-react-hooks": "^4.6.2",
+        "gh-pages": "^6.2.0",
         "husky": "^9.1.7",
         "lint-staged": "^15.2.10",
         "prettier": "^3.3.3",

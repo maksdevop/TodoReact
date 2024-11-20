@@ -32,7 +32,7 @@ const Task: FC<TaskProps> = ({ todo, deleteTodo, toggleCompletion }) => {
             setIsUpdate(!isUpdate);
         }
     };
-    
+
     const handleUpdateTask = () => {
         setIsUpdate(!isUpdate);
     };
