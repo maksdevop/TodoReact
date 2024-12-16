@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './Footer.css';
-import TaskFilter from '../TaskFilter/TaskFilter';
+import TaskFilter from '../TaskFilter/TaskFilter.tsx';
 
 const Footer = ({ setTodos, setFilter, filter, todos }) => {
     const completedTodo = todos.reduce(

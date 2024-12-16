@@ -33,6 +33,13 @@
     align-items: center;
 }
 
+.view__timer {
+    min-width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .todo-list li label {
     display: flex;
     align-items: center;
@@ -102,4 +109,35 @@
 
 .none {
     display: none;
+}
+
+.todo-list li .icon-pause,
+.todo-list li .icon-play {
+    font-size: 20px;
+    position: absolute;
+    bottom: 0;
+}
+
+.todo-list li .icon-pause {
+    margin-left: 30px;
+}
+
+.icon-pause:after {
+    content: '⏸';
+}
+
+.icon-play:after {
+    content: '▶';
+}
+
+.time-value {
+    font-size: 16px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
+
+.timer {
+    position: absolute;
+    top: 20px;
+    left: 350px;
 }

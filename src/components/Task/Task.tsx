@@ -8,14 +8,22 @@ type Todo = {
     name: string;
     completed: boolean;
     createdAt: string;
+    minVal: number;
+    secVal: number;
 };
 type TaskProps = {
     todo: Todo;
     deleteTodo: (id: number) => void;
     toggleCompletion: (id: number) => void;
+    toggleTimer: (id: number) => void;
 };
 
-const Task: FC<TaskProps> = ({ todo, deleteTodo, toggleCompletion }) => {
+const Task: FC<TaskProps> = ({
+    todo,
+    deleteTodo,
+    toggleCompletion,
+    toggleTimer,
+}) => {
     const [isUpdate, setIsUpdate] = useState<boolean>(false);
     const [inputValue, setInputValue] = useState<string>(todo.name);
 
@@ -43,14 +51,31 @@ const Task: FC<TaskProps> = ({ todo, deleteTodo, toggleCompletion }) => {
                 <label>
                     {!isUpdate ? (
                         <div className="view__wrap">
-                            <span
-                                onClick={() => toggleCompletion(todo.id)}
-                                className="description"
-                            >
-                                {inputValue}
-                            </span>
+                            <div className="view__timer">
+                                <span
+                                    onClick={() => toggleCompletion(todo.id)}
+                                    className="description"
+                                >
+                                    {inputValue}
+                                </span>
+                                <div className="timer">
+                                    <button
+                                        onClick={() => toggleTimer(todo.id)}
+                                        type="button"
+                                        className="icon icon-play"
+                                    />
+                                    <button
+                                        onClick={() => toggleTimer(todo.id)}
+                                        type="button"
+                                        className="icon icon-pause"
+                                    />
+                                    <div className="time-value">
+                                        {todo.minVal} : {todo.secVal}
+                                    </div>
+                                </div>
+                            </div>
                             <p className="created">
-                                Created{' '}
+                                Created
                                 {formatDistanceToNow(new Date(todo.createdAt), {
                                     addSuffix: true,
                                 })}
