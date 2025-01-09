@@ -4,6 +4,7 @@ import './Footer.css';
 import TaskFilter from '../TaskFilter/TaskFilter.tsx';
 
 const Footer = ({ setTodos, setFilter, filter, todos }) => {
+    const completedTodoArr = todos.filter((todo) => !todo.completed);
     const completedTodo = todos.reduce(
         (acc, cur) => acc + Number(!cur.completed),
         0,
@@ -14,7 +15,7 @@ const Footer = ({ setTodos, setFilter, filter, todos }) => {
             <TaskFilter filter={filter} setFilter={setFilter} />
             <button
                 type="button"
-                onClick={() => setTodos([])}
+                onClick={() => setTodos(completedTodoArr)}
                 className="clear-completed"
             >
                 Clear completed

@@ -1,4 +1,10 @@
-import React, { ChangeEvent, FC, FormEvent, useState } from 'react';
+import React, {
+    ChangeEvent,
+    FC,
+    FormEvent,
+    KeyboardEvent,
+    useState,
+} from 'react';
 import './NewTaskForm.css';
 
 type NewTaskFormProps = {
@@ -33,6 +39,12 @@ const NewTaskForm: FC<NewTaskFormProps> = ({ addTodo }) => {
         setInputSecValue('');
     };
 
+    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key !== 'Backspace' && (e.key < '0' || e.key > '9')) {
+            e.preventDefault();
+        }
+    };
+
     return (
         <div className="wrap">
             <form onSubmit={handleSubmit}>
@@ -50,13 +62,15 @@ const NewTaskForm: FC<NewTaskFormProps> = ({ addTodo }) => {
                         className="min"
                         placeholder="min"
                         onChange={handleChangeMin}
-                        value={inputMinValue}
+                        value={Number(inputMinValue)}
+                        onKeyDown={handleKeyDown}
                     />
                     <input
                         className="sec"
                         placeholder="sec"
                         onChange={handleChangeSec}
-                        value={inputSecValue}
+                        value={Number(inputSecValue)}
+                        onKeyDown={handleKeyDown}
                     />
                 </form>
             </div>
